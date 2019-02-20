@@ -9,14 +9,18 @@ chrome.runtime.onMessage.addListener(function (msg, sender) {
 		case "like":
 			var like = $(document).find('.dribbble-shot-actions li a#like-btn.form-btn.outlined.stats-action.like-shot');
 			console.log('Total ->', like.length);
-			action(like, 0);
-			console.log('like');
+			if(like.length > 0) {
+				action(like, 0);
+			}
+			console.log('Done with like!');
 		break;
 		case "dislike":
 			var dislike = $(document).find('.dribbble-shot-actions li a.form-sub.stats-action.like-shot.current-user-likes');
 			console.log('Total ->', dislike.length);
-			// action(dislike, 0);
-		  	console.log('dislike');
+			if(dislike.length > 0) {
+				action(dislike, 0);
+			}
+		  	console.log('Done with dislike!');
 		break;
 	  }
 });
