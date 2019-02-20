@@ -12,7 +12,6 @@ chrome.runtime.onMessage.addListener(function (msg, sender) {
 			if(like.length > 0) {
 				action(like, 0);
 			}
-			console.log('Done with like!');
 		break;
 		case "dislike":
 			var dislike = $(document).find('.dribbble-shot-actions li a.form-sub.stats-action.like-shot.current-user-likes');
@@ -20,19 +19,20 @@ chrome.runtime.onMessage.addListener(function (msg, sender) {
 			if(dislike.length > 0) {
 				action(dislike, 0);
 			}
-		  	console.log('Done with dislike!');
 		break;
 	  }
 });
 
 function action(item, i) {
-	console.log(i);
+	console.log(i+1);
 	setTimeout(function () {
 		item[i].click(); 
 		// console.log(item[i]);
 	   i++;                    
 	   if (i < item.length) {  
 		action(item, i);
+	   } else {
+		   console.log('Action Done!');
 	   }
 	}, 1000)
 }
